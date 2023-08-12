@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -55,28 +56,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
 @Composable
-fun TopicGrid(modifier: Modifier = Modifier) {
+fun TopicGrid(modifier: Modifier = Modifier
+   // .fillMaxSize()
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(.4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
         modifier = modifier
     ) {
-items(DataSource.topics){
-TopicData ->
-    courseCard(TopicData)
-}
+        items(DataSource.topics) { topicData ->
+            CourseCard(topicData)
+        }
     }
-//}
+}
+
 @Composable
-fun courseCard(name: TopicData, quantity: TopicData, image: TopicData) {
+fun CourseCard(topic: TopicData) {
     Card() {
 
         Row {
             Box {
                 Image(
-                    painter = painterResource(image.courseImage),
+                    painter = painterResource(topic.courseImage),
                     contentDescription = null,
                     modifier = Modifier
                         .size(width = 68.dp, height = 68.dp)
@@ -87,7 +92,7 @@ fun courseCard(name: TopicData, quantity: TopicData, image: TopicData) {
             Column {
 
                 Text(
-                    text = LocalContext.current.getString(name.name),
+                    text = LocalContext.current.getString(topic.name),
                     modifier = Modifier.padding(
                         start = 16.dp,
                         end = 16.dp,
@@ -99,14 +104,14 @@ fun courseCard(name: TopicData, quantity: TopicData, image: TopicData) {
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        painter = painterResource(R.mipmap.ic_launcher_round),
+                        painter = painterResource(R.drawable.scholw),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(start = 8.dp),
 
                         )
                     Text(
-                        text = quantity.quantity.toString(),
+                        text = topic.quantity.toString(),
                         modifier = Modifier.padding(
                             end = 16.dp, start = 16.dp
                         ),
@@ -119,3 +124,4 @@ fun courseCard(name: TopicData, quantity: TopicData, image: TopicData) {
         }
     }
 }
+

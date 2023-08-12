@@ -19,9 +19,9 @@ object DataSource {
         TopicData(R.string.painting, 172, R.drawable.painting),
         TopicData(R.string.photography, 321, R.drawable.photography),
         TopicData(R.string.tech, 118, R.drawable.tech),
-        TopicData(R.string.CS, 123,R.drawable.computerscience),
-        TopicData(R.string.bbit, 122, R.drawable.bbit),
-        TopicData(R.string.nursing, 89,R.drawable.nursing),
-        TopicData(R.string.TIE,67, R.drawable.tie)
+//        TopicData(R.string.CS, 123,R.drawable.computerscience),
+//        TopicData(R.string.bbit, 122, R.drawable.bbit),
+//        TopicData(R.string.nursing, 89,R.drawable.nursing),
+//        TopicData(R.string.TIE,67, R.drawable.tie)
     )
 }
